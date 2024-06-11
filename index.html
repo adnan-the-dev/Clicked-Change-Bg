@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .btn{
+        padding: 30px 53px;
+        margin-bottom: 2px;
+        border: 1px solid gray;
+        /* background: ; */
+        cursor: pointer;
+    }
+.btn-1{background-color: red;}
+.btn-2{background-color: green;}
+.btn-3{background-color: blue;}
+.btn-4{background-color: yellow;}
+.btn-5{background-color: aqua;}
+.btn-6{background-color: black;}
+.btn-7{background-color: magenta;}
+.btn-8{background-color: rgb(63, 14, 63);}
+.btn-9{background-color: rgb(0, 250, 54);}
+</style>
+<body>
+    <button class="btn btn-1"></button>
+    <button class="btn btn-2"></button>
+    <button class="btn btn-3"></button>
+    <button class="btn btn-4"></button>
+    <button class="btn btn-5"></button>
+    <button class="btn btn-6"></button>
+    <button class="btn btn-7"></button>
+    <button class="btn btn-8"></button>
+    <button class="btn btn-9"></button>
+</body>
+<script>
+    const btns = document.getElementsByClassName('btn')
+    for(const btn of btns){
+        btn.addEventListener("click", function(){
+            const buttStyle = getComputedStyle(this);
+            const btnBg = buttStyle["backgroundColor"]
+            document.body.style.backgroundColor = btnBg 
+        })
+    }
+
+
+    let arr = [1,2,[4,[4,4],[4,[4,[8]],[4,[5]],[5,[8],[7,8,[45]]]]],[2,[8]]]
+
+    // console.log(arr.flat(Infinity));
+    const result = []
+    function flatenArray(data){
+        data.map((item)=>{
+            if(Array.isArray(item)){
+                flatenArray(item)
+            }else{
+                result.push(item)
+            }
+        })
+    }
+    flatenArray(arr)
+    console.log(result);
+</script>
+</html>
